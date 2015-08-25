@@ -67,24 +67,18 @@
   Polymer({
     is: 'clock-element',
     properties: {
-      Clock:{
-        type: Object,
-        notify: true,
-        readOnly: true,
-        value: function() {
-          return this;
-        }
-      },
-      Hour:{
-        type: Object,
+      
+     
+      hour:{
+        type: Number,
         notify: true,
 
         value: function() {
           return this.hour;
-        },
-        observer:"attributeChangedObserver"
+        }
       }
     },
+    observers: ['attributeChangedObserver(heure,minute,second)'],
     updateClock: function() {
   		var now = new Date(),
   			hour = this.hour || now.getHours(),
@@ -108,8 +102,7 @@
   		this.secondElement.style.transform = secondRule;
   	},
     ready: function() {
-      console.log(this.Clock);
-      var CE = this.Clock;
+      
       this.hourElement = this.querySelector( ".clock-element-hour" );
   		this.minuteElement = this.querySelector( ".clock-element-minute" );
   		this.secondElement = this.querySelector( ".clock-element-second" );
@@ -117,8 +110,8 @@
   		this.updateClock();
   		if ( !this.hour && !this.minute && !this.second  ) {
   			this.interval = setInterval(function() {
-  				CE.updateClock();
-  			}, 1000 );
+  				this.updateClock();
+  			}.bind(this), 1000 );
   		}
     },
 
