@@ -8,6 +8,14 @@
     "tag": "v0.0.1"
 
   },
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "clock",
+    "analog"
+  ] 
+
   "dependencies": {
     "polymer": "Polymer/polymer#master"
   },
