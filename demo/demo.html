@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Building Clock Element</title>
+	
+  <script src="../../webcomponentsjs/webcomponents.js"></script>
+  
+  <link rel="import" href="../clock-element.html">
+
+	<!--<script src="../bower_components/CustomElements/custom-elements.js"></script>-->
+	<script src="../bower_components/document-register-element/build/document-register-element.js"></script>
+	
+</head>
+<body>
+
+<!-- A static time -->
+<clock-element hour="9" minute="30" second="10"></clock-element>
+
+<!-- The current time -->
+<clock-element></clock-element>
+
+<!-- A big clock -->
+<clock-element style="height: 500px; width: 500px;"></clock-element>
+
+</body>
+</html>
