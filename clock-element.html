@@ -68,13 +68,28 @@
     is: 'clock-element',
     properties: {
       
-     
-      hour:{
+     hour:{
         type: Number,
         notify: true,
 
         value: function() {
           return this.hour;
+        }
+      },
+      minute:{
+        type: Number,
+        notify: true,
+
+        value: function() {
+          return this.minute;
+        }
+      },
+      second:{
+        type: Number,
+        notify: true,
+
+        value: function() {
+          return this.second;
         }
       }
     },
