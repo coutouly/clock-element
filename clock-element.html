@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <dom-module id="clock-element">
   <style>
-  .clock-face-container {
+  .clock-element-container {
     display: block;
     width: 100px;
     height: 100px;
@@ -9,7 +9,7 @@
     border: 6px solid black;
     border-radius: 50%;
   }
-  .clock-face-container::after {
+  .clock-element-container::after {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -21,13 +21,13 @@
     content: "";
     display: block;
   }
-  .clock-face-container > div {
+  .clock-element-container > div {
     position: absolute;
     top: 50%;
     left: 50%;
     background: black;
   }
-  .clock-face-hour {
+  .clock-element-hour {
     margin: -4px 0 -4px -25%;
     padding: 4px 0 4px 25%;
     -ms-transform-origin: 100% 50%;
@@ -35,7 +35,7 @@
     transform-origin: 100% 50%;
     border-radius: 4px 0 0 4px;
   }
-  .clock-face-minute {
+  .clock-element-minute {
     margin: -40% -3px 0;
     padding: 40% 3px 0;
     -ms-transform-origin: 50% 100%;
@@ -43,7 +43,7 @@
     transform-origin: 50% 100%;
     border-radius: 3px 3px 0 0;
   }
-  .clock-face-second {
+  .clock-element-second {
     margin: -40% -1px 0 0;
     padding: 40% 1px 0;
     -ms-transform-origin: 50% 100%;
@@ -53,10 +53,10 @@
 
   </style>
   <template>
-    <div class='clock-face-container' >
-				<div class='clock-face-hour'></div>
-				<div class='clock-face-minute'></div>
-				<div class='clock-face-second'></div>
+    <div class='clock-element-container' >
+				<div class='clock-element-hour'></div>
+				<div class='clock-element-minute'></div>
+				<div class='clock-element-second'></div>
 			</div>
   </template>
 </dom>
@@ -110,9 +110,9 @@
     ready: function() {
       console.log(this.Clock);
       var CE = this.Clock;
-      this.hourElement = this.querySelector( ".clock-face-hour" );
-  		this.minuteElement = this.querySelector( ".clock-face-minute" );
-  		this.secondElement = this.querySelector( ".clock-face-second" );
+      this.hourElement = this.querySelector( ".clock-element-hour" );
+  		this.minuteElement = this.querySelector( ".clock-element-minute" );
+  		this.secondElement = this.querySelector( ".clock-element-second" );
 
   		this.updateClock();
   		if ( !this.hour && !this.minute && !this.second  ) {
