@@ -14,35 +14,19 @@ A web component for building clocks, inspired by
 
 ### Usage
 
-Include the component's JS/CSS, and then use the `<clock-face>` element.
+Import the clock-element.html file and then use the `<clock-element>` element.
 
 ```
-<link rel="stylesheet" href="clock-face.css">
-<script src="clock-face.js"></script>
-
-<clock-face></clock-face>
+<link rel="import" href="../bower_components/clock-element/clock-element.html">
 ```
 
-The `<clock-face>` element displays the current time by default. You can alternatively display a static time using the `hour`, `minute`, and `second` attributes.
+The `<clock-element>` element displays the current time by default. 
 
-```
-<clock-face hour="9" minute="30" second="10"></clock-face>
-```
 
-### Dependencies
-
-The component requires a custom elements polyfill, either [Polymer's](https://github.com/Polymer/CustomElements) or [Andrea Giammarchi's](https://github.com/WebReflection/document-register-element); I recommend the latter, as it's lightweight and does everything the `<clock-face>` element needs. 
 
 ### Browser Support
 
-* IE 9+
-* Firefox
-* Chrome
-* Safari
-* Opera
-* iOS Safari
-* Android Browser
-* Chrome for Android
+ever-green browsers
 
-IE versions < 9 are not supported because the component relies on CSS transformations.
+
 
