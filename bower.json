@@ -1,0 +1,18 @@
+{
+  "name": "clock-element",
+  "homepage": "https://github.com/coutouly/clock-element",
+  "version": "0.0.1",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1"
+
+  },
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  },
+  "_source": "https://github.com/coutouly/clock-element.git",
+  "_target": "~0.0.1",
+  "_originalSource": "coutouly/clock-element",
+  "_direct": true
+}

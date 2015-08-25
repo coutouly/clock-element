@@ -1,0 +1,138 @@
+<link rel="import" href="../polymer/polymer.html">
+<dom-module id="clock-element">
+  <style>
+  .clock-face-container {
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border: 6px solid black;
+    border-radius: 50%;
+  }
+  .clock-face-container::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    background: black;
+    border-radius: 6px;
+    content: "";
+    display: block;
+  }
+  .clock-face-container > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: black;
+  }
+  .clock-face-hour {
+    margin: -4px 0 -4px -25%;
+    padding: 4px 0 4px 25%;
+    -ms-transform-origin: 100% 50%;
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    border-radius: 4px 0 0 4px;
+  }
+  .clock-face-minute {
+    margin: -40% -3px 0;
+    padding: 40% 3px 0;
+    -ms-transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    border-radius: 3px 3px 0 0;
+  }
+  .clock-face-second {
+    margin: -40% -1px 0 0;
+    padding: 40% 1px 0;
+    -ms-transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+
+  </style>
+  <template>
+    <div class='clock-face-container' >
+				<div class='clock-face-hour'></div>
+				<div class='clock-face-minute'></div>
+				<div class='clock-face-second'></div>
+			</div>
+  </template>
+</dom>
+
+<script>
+  'use strict';
+
+  Polymer({
+    is: 'clock-element',
+    properties: {
+      Clock:{
+        type: Object,
+        notify: true,
+        readOnly: true,
+        value: function() {
+          return this;
+        }
+      },
+      Hour:{
+        type: Object,
+        notify: true,
+
+        value: function() {
+          return this.hour;
+        },
+        observer:"attributeChangedObserver"
+      }
+    },
+    updateClock: function() {
+  		var now = new Date(),
+  			hour = this.hour || now.getHours(),
+  			minute = this.minute || now.getMinutes(),
+  			second = this.second || now.getSeconds(),
+  			secondAngle = second * 6,
+  			minuteAngle = minute * 6 + secondAngle / 60,
+  			hourAngle = ( ( hour % 12 ) / 12 ) * 360 + 90 + minute / 12,
+  			hourRule = "rotate(" + hourAngle + "deg)",
+  			minuteRule = "rotate(" + minuteAngle + "deg)",
+  			secondRule = "rotate(" + secondAngle + "deg)";
+
+  		this.hourElement.style.msTransform = hourRule;
+  		this.hourElement.style.webkitTransform = hourRule;
+  		this.hourElement.style.transform = hourRule;
+  		this.minuteElement.style.msTransform = minuteRule;
+  		this.minuteElement.style.webkitTransform = minuteRule;
+  		this.minuteElement.style.transform = minuteRule;
+  		this.secondElement.style.msTransform = secondRule;
+  		this.secondElement.style.webkitTransform = secondRule;
+  		this.secondElement.style.transform = secondRule;
+  	},
+    ready: function() {
+      console.log(this.Clock);
+      var CE = this.Clock;
+      this.hourElement = this.querySelector( ".clock-face-hour" );
+  		this.minuteElement = this.querySelector( ".clock-face-minute" );
+  		this.secondElement = this.querySelector( ".clock-face-second" );
+
+  		this.updateClock();
+  		if ( !this.hour && !this.minute && !this.second  ) {
+  			this.interval = setInterval(function() {
+  				CE.updateClock();
+  			}, 1000 );
+  		}
+    },
+
+    readAttributes : function() {
+  		this.hour = this.getAttribute( "hour" );
+  		this.minute = this.getAttribute( "minute" );
+  		this.second = this.getAttribute( "second" );
+  	},
+    attributeChangedObserver : function( attrName, oldVal, newVal ) {
+      console.log(attrName, oldVal, newVal );
+  		if ( /hour|minute|second/.test( attrName ) ) {
+  			this.readAttributes();
+  			this.updateClock();
+  		}
+  	}
+  })
+</script>
