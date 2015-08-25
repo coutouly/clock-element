@@ -14,7 +14,7 @@
     "polymer",
     "clock",
     "analog"
-  ] 
+  ], 
 
   "dependencies": {
     "polymer": "Polymer/polymer#master"
